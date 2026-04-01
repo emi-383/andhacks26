@@ -1,0 +1,34 @@
+/* src/styles/global.css */
+:root {
+  /* Default- dark mode */
+    --bg-color: #000;
+  --text-color: #024f15;  /* fix later */
+  --transition: 1.2s ease-in-out;
+}
+
+/* Change when click andy- color mode */
+body.color-mode {
+  --bg-color: #3b2e81;
+  --text-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition), color var(--transition);
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+/* clouds for color mode */
+.cloud-layer {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+body.color-mode .cloud-layer {
+  opacity: 0.6;
+}

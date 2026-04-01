@@ -1,0 +1,47 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Andy from '../components/Andy.astro';
+import ParticleBG from '../components/ParticleBG.astro';
+import { Image } from 'astro:assets';
+
+// Cloudy effects to add later
+// import clouds from '../assets/clouds.png'; 
+---
+
+<MainLayout title="Welcome | &Hacks 2026">
+  
+  <div class="cloud-layer">
+    <div style="width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);"></div>
+  </div>
+
+  <main>
+    <section id="hero">
+      <Andy />
+      <h1>&Hacks 2026</h1>
+    </section>
+
+    <section id="details">
+      <div class="schedule-area">
+         <h2>Schedule</h2>
+         <p>schedule stuff in progress</p>
+      </div>
+      
+      <ParticleBG /> 
+    </section>
+  </main>
+</MainLayout>
+
+<style>
+  main { display: flex; flex-direction: column; align-items: center; }
+  #hero { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+  }
+  
+  /* Make sure the text is readable over the particles/background */
+  h1 { font-size: 4rem; z-index: 5; }
+</style>
