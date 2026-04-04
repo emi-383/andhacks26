@@ -1,6 +1,115 @@
 ---
 // src/components/ParticleBG.astro
 ---
-<div id="particles-js" style="height: 500px; border: 1px dashed #444;">
-	<p style="padding: 20px;">[bottom section]</p>
-</div>
+
+<canvas id="particle-canvas"></canvas>
+
+<style>
+  #particle-canvas {
+    position: fixed;    /* stays put when scrolling */
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;  /* clicks pass through */
+  }
+</style>
+
+<script>
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadAll } from "@tsparticles/all";
+  await loadAll(tsParticles);
+
+  const getDarkConfig = () => ({
+    fullScreen: false,
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "repulse" },  // cursor pushes particles
+      },
+      modes: {
+        repulse: { distance: 100, duration: 0.4 },
+      },
+    },
+    particles: {
+      number: { value: 80 },
+      color: { value: "#00ff00" },
+      links: {
+        enable: true,          // connecting lines in dark mode
+        color: "#00ff00",
+        opacity: 0.3,
+        distance: 150,
+      },
+      move: {
+        enable: true,
+        speed: 1.5,
+        outModes: "bounce",
+      },
+      opacity: { value: 0.6 },
+      size: { value: { min: 1, max: 3 } },
+    },
+    detectRetina: true,
+  });
+
+  const getColorConfig = () => ({
+  	fullScreen: false,
+  	fpsLimit: 60,
+  	interactivity: {
+      detectsOn: "window",
+      events: {
+        onHover: { enable: true, mode: "parallax" },
+      },
+      modes: {
+        parallax: { enable: true, force: 60, smooth: 10 },
+      },
+    },
+    particles: {
+      number: { value: 80 },
+      color: { value: "#ffffff" },
+      links: { enable: false },
+        move: {
+        enable: true,
+        speed: 0,
+        outModes: "bounce",
+      },
+      opacity: { value: 0.5 },
+      size: { value: { min: 1, max: 3 } },
+      parallax: {
+        enable: true,
+        force: 60,
+        smooth: 10,
+      },
+    },
+    detectRetina: true,
+  });
+
+  // manually feed mouse position to tsParticles to bypass pointer-events:none
+  window.addEventListener("mousemove", (e) => {
+    if (!document.body.classList.contains("color-mode")) return;
+    const canvas = document.getElementById("particle-canvas");
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const event = new MouseEvent("mousemove", {
+      clientX: e.clientX,
+      bubbles: true,
+    });
+    canvas.dispatchEvent(event);
+  });
+
+
+
+  // start in dark mode
+  const container = await tsParticles.load({
+    id: "particle-canvas",
+    options: getDarkConfig(),
+  });
+
+  // swap config when mode switches
+  const observer = new MutationObserver(() => {
+    const isColor = document.body.classList.contains('color-mode');
+    tsParticles.load({
+      id: "particle-canvas",
+      options: isColor ? getColorConfig() : getDarkConfig(),
+    });
+  });
+
+  observer.observe(document.body, { attributeFilter: ['class'] });
+</script>
