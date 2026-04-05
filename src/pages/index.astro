@@ -28,9 +28,9 @@ import { Image } from 'astro:assets';
     </section>
 
     <section id="details">
-      <div class="schedule-area">
-         <h2>Schedule</h2>
-         <p>schedule stuff in progress</p>
+      <div class="intro-area">
+         <h2>AI + imagination = imaginAItion</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </section>
   </main>
@@ -45,8 +45,8 @@ import { Image } from 'astro:assets';
 
   .hero-title {
     position: absolute;
-    top: 6rem;        /* below navbar */
-    left: 4rem;       /* left side */
+    top: 8rem;        /* below navbar */
+    left: 6rem;       /* left side */
     z-index: 5;
   }
 
@@ -65,13 +65,25 @@ import { Image } from 'astro:assets';
 
   .hero-andy {
     position: absolute;
-    top: 50%;
-    right: 15%;
+    top: 60%;
+    right: 20%;
     transform: translateY(-50%);
     z-index: 5;
   }
 
   body.color-mode .hero-title h1 {
   font-family: 'Pacifico', cursive;   /* diff font only for color mode big title */
+  }
+
+  #details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  }
+
+  .intro-area {
+    max-width: 800px;
+    text-align: center;
   }
 </style>

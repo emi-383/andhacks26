@@ -13,10 +13,16 @@ body.dark-mode {
   font-family: 'Orbitron', sans-serif;
 }
 
+@keyframes colorFlash {
+  0%   { color: #3793da; }
+  100% { color: var(--text-color); }
+}
+
 body.color-mode {
   --bg-color: #332f79; 
   --text-color: #ffffff;
   font-family: 'Nunito', sans-serif;
+  animation: colorFlash 2.9s ease-out forwards;
 }
 
 body {
