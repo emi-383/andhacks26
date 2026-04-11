@@ -3,12 +3,14 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Andy from '../components/Andy.astro';
 import ParticleBG from '../components/ParticleBG.astro';
 import { Image } from 'astro:assets';
+import Intro from '../components/Intro.astro';
+import RegisButtons from '../components/RegisButtons.astro';
 
 // Cloudy effects to add later
 // import clouds from '../assets/clouds.png'; 
 ---
 
-<MainLayout title="Welcome | &Hacks 2026">
+<MainLayout title="&Hacks 2026">
   
   <ParticleBG />
 
@@ -21,6 +23,7 @@ import { Image } from 'astro:assets';
       <div class="hero-title">
         <h1>&amp;Hacks 2026</h1>
         <p>Sept. 25–27</p>
+        <RegisButtons />
       </div>
       <div class="hero-andy">
         <Andy />
@@ -29,8 +32,7 @@ import { Image } from 'astro:assets';
 
     <section id="details">
       <div class="intro-area">
-         <h2>AI + imagination = imaginAItion</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+         <Intro />
       </div>
     </section>
   </main>
@@ -45,8 +47,8 @@ import { Image } from 'astro:assets';
 
   .hero-title {
     position: absolute;
-    top: 8rem;        /* below navbar */
-    left: 6rem;       /* left side */
+    top: 8rem;
+    left: 6rem;
     z-index: 5;
   }
 
@@ -83,7 +85,7 @@ import { Image } from 'astro:assets';
   }
 
   .intro-area {
-    max-width: 800px;
+    max-width: 820px;
     text-align: center;
   }
 </style>
