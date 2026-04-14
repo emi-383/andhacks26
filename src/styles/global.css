@@ -13,7 +13,7 @@ body.dark-mode {
 }
 
 @keyframes colorFlash {
-  0%   { color: #3793da; }
+  0%   { color: #2e95e3; }
   100% { color: var(--text-color); }
 }
 
