@@ -3,44 +3,13 @@ import { Image } from 'astro:assets';
 import andyImg from '../assets/andy_conceptart_colored.png';
 ---
 
-<div id="andy-trigger" class="andy-wrap">
+<div class="andy-wrap">
   <Image src={andyImg} alt="Andy" width={300} height={300} />
-  <p class="status-text">text for off mode. click to switch</p>
 </div>
 
 <style>
   .andy-wrap {
-    cursor: pointer;
     text-align: center;
     z-index: 10;
   }
-  .andy-wrap:hover { transform: scale(1.05); transition: 0.3s; }
 </style>
-
-<script>
-  const andy = document.getElementById('andy-trigger');
-  const status = document.querySelector('.status-text');
-  const herotitle = document.querySelector('.hero-title');
-  const navbar = document.getElementById('navbar');
-
-  andy?.addEventListener('click', () => {
-    herotitle.classList.add('glitching');
-    navbar.classList.add('glitching');
-
-    setTimeout(() => {
-      const isColor = document.body.classList.toggle('color-mode');
-      document.body.classList.toggle('dark-mode', !isColor);
-
-      if (status) {
-        status.textContent = isColor
-          ? "text for on mode. click to switch"   // optional text- remove later?
-          : "text for off mode. click to switch";
-      }
-    }, 250);
-
-    setTimeout(() => {
-      herotitle.classList.remove('glitching');
-      navbar.classList.remove('glitching');
-    }, 500);
-  });
-</script>

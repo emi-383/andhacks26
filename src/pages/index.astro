@@ -5,6 +5,8 @@ import ParticleBG from '../components/ParticleBG.astro';
 import { Image } from 'astro:assets';
 import Intro from '../components/Intro.astro';
 import RegisButtons from '../components/RegisButtons.astro';
+import Switch from '../components/Switch.astro';
+import ArrowTop from '../components/ArrowTop.astro';
 
 // Cloudy effects to add later
 // import clouds from '../assets/clouds.png'; 
@@ -12,6 +14,7 @@ import RegisButtons from '../components/RegisButtons.astro';
 
 <MainLayout title="&Hacks 2026">
   
+  <Switch slot="above-filter" />
   <ParticleBG />
 
   <div class="cloud-layer">
@@ -20,6 +23,7 @@ import RegisButtons from '../components/RegisButtons.astro';
 
   <main>
     <section id="hero">
+      <Switch />
       <div class="hero-title">
         <h1>&amp;Hacks 2026</h1>
         <p>Sept. 25–27</p>
@@ -36,6 +40,7 @@ import RegisButtons from '../components/RegisButtons.astro';
       </div>
     </section>
   </main>
+  <ArrowTop />
 </MainLayout>
 
 <style>
