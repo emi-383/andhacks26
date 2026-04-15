@@ -72,20 +72,20 @@
   }
 
   #moon-switch.dark .moon-surface {
-    background: #818181;
+    background: #d3d3d3;
   }
 
   #moon-switch.dark .moon-shadow {
-    transform: translateX(15%);
+    transform: translateX(20%);
     background: #272727;
   }
 
   #moon-switch.dark {
-    filter: drop-shadow(0 0 10px rgba(0, 127, 0, 0.71));
+    filter: drop-shadow(0 0 10px rgba(0, 182, 0, 0.95));
   }
 
   #moon-switch.dark:hover {
-    filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.8));
+    filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.87));
   }
 
   /* ring pulse */
@@ -100,7 +100,7 @@
   }
 
   #moon-switch.dark::before {
-    border-color: rgba(0, 130, 0, 0.75);  /* ring pulse in dark mode */
+    border-color: rgba(0, 175, 0, 0.75);  /* ring pulse in dark mode */
   }
 
   @keyframes pulse {
@@ -144,7 +144,7 @@
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           shadow.style.transition = 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
-          shadow.style.transform = 'translateX(10%)';
+          shadow.style.transform = 'translateX(20%)';
         });
       });
     }
@@ -160,3 +160,13 @@
       navbar?.classList.remove('glitching');
     }, 500);
   });
+
+  // auto switch to color mode on first load
+  const hasVisited = sessionStorage.getItem('hasVisited');
+  if (!hasVisited) {
+    sessionStorage.setItem('hasVisited', 'true');
+    setTimeout(() => {
+      // trigger the same click behavior programmatically
+      moonBtn.click();
+    }, 3000);  // 5 seconds after load
+  }
