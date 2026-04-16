@@ -1,0 +1,163 @@
+---
+const wmLogoDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(`
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280">
+    <rect width="720" height="280" rx="32" fill="transparent"/>
+    <text x="360" y="128" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="92" font-weight="700" fill="#115740">W&amp;M</text>
+    <text x="360" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" letter-spacing="7" fill="#115740">WILLIAM &amp; MARY</text>
+  </svg>
+`)}`;
+
+const logo = {
+  src: wmLogoDataUri,
+  alt: 'William & Mary placeholder logo',
+  href: 'mailto:computing@wm.edu?subject=%26Hacks%20Sponsorship',
+};
+
+const row = [
+  { id: 'wm-1', ...logo },
+  { id: 'wm-2', ...logo },
+  { id: 'wm-3', ...logo },
+  { id: 'wm-4', ...logo },
+];
+
+const rows = [
+  { items: row, dir: 'left' },
+  { items: row.map((item, index) => ({ ...item, id: `wm-b-${index}` })), dir: 'right' },
+  { items: row.map((item, index) => ({ ...item, id: `wm-c-${index}` })), dir: 'left' },
+];
+---
+
+<section id="sponsors" class="sponsors-section" aria-label="Sponsors">
+  <div class="sponsors-inner">
+    {rows.map((rowData, rowIndex) => (
+      <div class="sponsor-row-shell">
+        <div
+          class:list={[
+            'sponsor-track',
+            rowData.dir === 'right' ? 'sponsor-track-right' : 'sponsor-track-left',
+          ]}
+        >
+          {[...rowData.items, ...rowData.items].map((item, itemIndex) => (
+            <a
+              class="sponsor-card"
+              href={item.href}
+              aria-hidden={itemIndex >= rowData.items.length ? 'true' : 'false'}
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading={rowIndex === 0 && itemIndex < rowData.items.length ? 'eager' : 'lazy'}
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .sponsors-section {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    overflow: hidden;
+    padding: 1rem 0 7rem;
+    scroll-margin-top: 80px;
+  }
+
+  .sponsors-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 1;
+  }
+
+  .sponsor-row-shell {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .sponsor-row-shell:hover .sponsor-track {
+    animation-play-state: paused;
+  }
+
+  .sponsor-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 1.25rem;
+  }
+
+  .sponsor-track-left {
+    animation: sponsor-scroll-left 28s linear infinite;
+  }
+
+  .sponsor-track-right {
+    animation: sponsor-scroll-right 28s linear infinite;
+  }
+
+  .sponsor-card {
+    position: relative;
+    flex: 0 0 auto;
+    width: clamp(165px, 22vw, 285px);
+    height: clamp(105px, 14vw, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: transparent;
+    border: 1px solid rgba(0, 255, 0, 0.22);
+    text-decoration: none;
+    padding: 0.9rem;
+  }
+
+  .sponsor-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: saturate(1.02) brightness(1.02);
+  }
+
+  :global(body.color-mode) .sponsor-card {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  @keyframes sponsor-scroll-left {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 0.625rem));
+    }
+  }
+
+  @keyframes sponsor-scroll-right {
+    from {
+      transform: translateX(calc(-50% - 0.625rem));
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sponsor-track {
+      animation: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .sponsors-section {
+      padding: 1rem 0 8rem;
+    }
+
+    .sponsor-track {
+      gap: 1.75rem;
+    }
+  }
+</style>
