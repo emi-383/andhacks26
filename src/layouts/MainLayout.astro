@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 const { title = "Hackathon 2026" } = Astro.props;
+import Footer from '../components/Footer.astro';
 ---
 <html lang="en">
   <head>
@@ -16,6 +17,7 @@ const { title = "Hackathon 2026" } = Astro.props;
       <main>
         <slot />
       </main>
+      <Footer />
     </div>
 
     <style is:global>
