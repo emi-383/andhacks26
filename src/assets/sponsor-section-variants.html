@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sponsor Section Variants</title>
+  <style>
+    :root {
+      --ink: #17151f;
+      --paper: #f6f1e8;
+      --section-radius: 32px;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+      --logo-green: #115740;
+      --logo-gold: #f0b323;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #332f79;
+      color: var(--paper);
+    }
+
+    .page {
+      width: min(1400px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .intro {
+      margin: 0 0 28px;
+      max-width: 760px;
+      color: rgba(250, 240, 205, 0.85);
+      line-height: 1.6;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 28px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .swatch {
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #111;
+      background: #faf0cd;
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .variant {
+      padding: 0;
+    }
+
+    .variant-label {
+      margin: 0 0 12px;
+      font: 600 13px/1.4 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250, 240, 205, 0.8);
+    }
+
+    .sponsors-section {
+      padding: 28px 24px;
+      border-radius: var(--section-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .sponsors-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .sponsors-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .sponsors-copy {
+      margin: 8px 0 0;
+      max-width: 34ch;
+      font: 400 14px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    .sponsor-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .sponsor-row {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .sponsor-card {
+      width: 210px;
+      height: 132px;
+      flex: 0 0 auto;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .logo {
+      width: 72%;
+      height: 52px;
+      position: relative;
+    }
+
+    .logo.wm::before {
+      content: "W&M";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--logo-green);
+      -webkit-text-stroke: 4px var(--logo-gold);
+      paint-order: stroke fill;
+    }
+
+    .logo.wordmark::before {
+      content: "WILLIAM \0026 MARY";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font: 700 15px/1 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.24em;
+      color: var(--logo-green);
+    }
+
+    .meta {
+      margin-top: 12px;
+      font: 400 12px/1.5 Arial, Helvetica, sans-serif;
+      opacity: 0.85;
+    }
+
+    .v1 { background: #3a337e; color: #faf0cd; }
+    .v1 .sponsor-card { background: #a55e98; }
+
+    .v8 { background: #3a337e; color: #faf0cd; }
+    .v8 .sponsor-card { background: #edb68e; }
+
+    .v9 { background: #a55e98; color: #faf0cd; }
+    .v9 .sponsor-card { background: #f5df8c; }
+    .v9 .sponsor-card .logo::before { color: #3a337e; }
+
+    .v14 { background: #3a337e; color: #faf0cd; }
+    .v14 .sponsor-card { background: #7a87b6; }
+
+    @media (max-width: 900px) {
+      .sponsor-row {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100%, calc(100% - 20px));
+      }
+
+      .sponsors-section {
+        padding: 18px;
+      }
+
+      .sponsor-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .sponsor-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Sponsor Section Variants</h1>
+    <p class="intro">
+      Reduced set of static sponsor-section studies using the selected palette pairings.
+    </p>
+
+    <div class="palette">
+      <span class="swatch" style="background:#3a337e;color:#faf0cd;">#3a337e</span>
+      <span class="swatch" style="background:#a55e98;color:#faf0cd;">#a55e98</span>
+      <span class="swatch" style="background:#edb68e;color:#17151f;">#edb68e</span>
+      <span class="swatch" style="background:#f5df8c;color:#17151f;">#f5df8c</span>
+      <span class="swatch" style="background:#7a87b6;color:#17151f;">#7a87b6</span>
+    </div>
+
+    <div class="grid">
+      <section class="variant">
+        <p class="variant-label">Variant 01 · Deep Violet / Orchid</p>
+        <div class="sponsors-section v1">
+          <div class="sponsors-header">
+            <div>
+              <h2 class="sponsors-title">Sponsors</h2>
+              <p class="sponsors-copy">Dark section with warmer cards for clear visual hierarchy.</p>
+            </div>
+          </div>
+          <div class="sponsor-stack">
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div></div>
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div></div>
+          </div>
+          <div class="meta">Section `#3a337e` · Cards `#a55e98`</div>
+        </div>
+      </section>
+
+      <section class="variant">
+        <p class="variant-label">Variant 08 · Deep Violet / Peach</p>
+        <div class="sponsors-section v8">
+          <div class="sponsors-header">
+            <div>
+              <h2 class="sponsors-title">Sponsors</h2>
+              <p class="sponsors-copy">Dark shell with warm cards for stronger focal punch.</p>
+            </div>
+          </div>
+          <div class="sponsor-stack">
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div></div>
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div></div>
+          </div>
+          <div class="meta">Section `#3a337e` · Cards `#edb68e`</div>
+        </div>
+      </section>
+
+      <section class="variant">
+        <p class="variant-label">Variant 09 · Orchid / Soft Gold</p>
+        <div class="sponsors-section v9">
+          <div class="sponsors-header">
+            <div>
+              <h2 class="sponsors-title">Sponsors</h2>
+              <p class="sponsors-copy">Warm light cards against a richer berry field.</p>
+            </div>
+          </div>
+          <div class="sponsor-stack">
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div></div>
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div></div>
+          </div>
+          <div class="meta">Section `#a55e98` · Cards `#f5df8c`</div>
+        </div>
+      </section>
+
+      <section class="variant">
+        <p class="variant-label">Variant 14 · Deep Violet / Slate Blue</p>
+        <div class="sponsors-section v14">
+          <div class="sponsors-header">
+            <div>
+              <h2 class="sponsors-title">Sponsors</h2>
+              <p class="sponsors-copy">All-cool pair with more card lift than the site background.</p>
+            </div>
+          </div>
+          <div class="sponsor-stack">
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div></div>
+            <div class="sponsor-row"><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div><div class="sponsor-card"><div class="logo wordmark"></div></div><div class="sponsor-card"><div class="logo wm"></div></div></div>
+          </div>
+          <div class="meta">Section `#3a337e` · Cards `#7a87b6`</div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
