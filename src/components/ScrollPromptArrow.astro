@@ -1,0 +1,45 @@
+---
+---
+
+<div class="scroll-prompt">
+    <div class="scroll-prompt-arrow-container">
+        <div class="scroll-prompt-arrow"><div></div></div>
+    </div>
+</div>
+
+<style>
+    .scroll-prompt {
+        position: absolute;
+        z-index: 998;
+        bottom: -80px;
+        left: 50%;
+        margin-left: -80px;
+        width: 160px;
+        height: 160px;
+        animation: fadeIn 2s ease-in once;
+
+        .scroll-prompt-arrow-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -18px;
+            animation: bounce 0.9s ease-in-out infinite;
+        }
+
+        .scroll-prompt-arrow > div {
+            width: 30px;
+            height: 30px;
+            border-right: 4px solid white; /* bebebe */
+            border-bottom: 4px solid white;
+            opacity: 80%;
+            transform: rotate(45deg) translateZ(1px);
+        }
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+        100% { transform: translateY(0); }
+    }
+
+</style>
