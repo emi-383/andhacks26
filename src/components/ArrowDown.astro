@@ -1,14 +1,14 @@
 ---
 ---
 
-<div class="scroll-prompt">
-    <div class="scroll-prompt-arrow-container">
-        <div class="scroll-prompt-arrow"><div></div></div>
+<div class="arrow-down">
+    <div class="arrow-down-arrow-container">
+        <div class="arrow-down-arrow"><div></div></div>
     </div>
 </div>
 
 <style>
-    .scroll-prompt {
+    .arrow-down {
         position: absolute;
         z-index: 998;
         bottom: -80px;
@@ -18,7 +18,7 @@
         height: 160px;
         animation: fadeIn 2s ease-in once;
 
-        .scroll-prompt-arrow-container {
+        .arrow-down-arrow-container {
             position: absolute;
             top: 0;
             left: 50%;
@@ -26,7 +26,7 @@
             animation: bounce 0.9s ease-in-out infinite;
         }
 
-        .scroll-prompt-arrow > div {
+        .arrow-down-arrow > div {
             width: 30px;
             height: 30px;
             border-right: 4px solid var(--text-color); /* bebebe */
