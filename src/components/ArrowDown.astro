@@ -1,0 +1,45 @@
+---
+---
+
+<div class="arrow-down">
+    <div class="arrow-down-arrow-container">
+        <div class="arrow-down-arrow"><div></div></div>
+    </div>
+</div>
+
+<style>
+    .arrow-down {
+        position: absolute;
+        z-index: 998;
+        bottom: -80px;
+        left: 50%;
+        margin-left: -80px;
+        width: 160px;
+        height: 160px;
+        animation: fadeIn 2s ease-in once;
+
+        .arrow-down-arrow-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -18px;
+            animation: bounce 0.9s ease-in-out infinite;
+        }
+
+        .arrow-down-arrow > div {
+            width: 30px;
+            height: 30px;
+            border-right: 4px solid var(--text-color); /* bebebe */
+            border-bottom: 4px solid var(--text-color);
+            opacity: 80%;
+            transform: rotate(45deg) translateZ(1px);
+        }
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+        100% { transform: translateY(0); }
+    }
+
+</style>
