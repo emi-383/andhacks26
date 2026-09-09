@@ -1,24 +1,23 @@
 ---
 import { Image } from 'astro:assets';
-import andyImg from '../assets/andyc4.png';
+import bgcloudsImg from '../assets/bgclouds5.png';
 ---
 
-<div class="andy-wrap">
-  <Image src={andyImg} alt="Andy"/>
+<div class="bgcloud-wrap">
+  <Image src={bgcloudsImg} alt="BGclouds"/>
 </div>
 
 <style>
-  .andy-wrap {
+  .bgcloud-wrap {
     position: absolute;
-    top: 28vh;
-    left: 0;
+    top: -20vh;
     width: 100vw;
     height: 93vh;
-    z-index: 5;
+    z-index: 3;
     overflow: hidden;
   }
 
-  .andy-wrap img {
+  .bgcloud-wrap img {
     width: 103%;
     height: 100%;
     object-fit: fill;

@@ -15,25 +15,6 @@
 
   await loadAll(tsParticles);
 
-  const getDarkConfig = () => ({
-    fullScreen: false,
-    fpsLimit: 60,
-    interactivity: {
-      detectsOn: "window",
-      events: { onHover: { enable: true, mode: "repulse" } },
-      modes: { repulse: { distance: 100, duration: 0.4 } },
-    },
-    particles: {
-      number: { value: 120 },
-      color: { value: "#8eff8e" },
-      links: { enable: true, color: "#e4ffe4", opacity: 0.3, distance: 250 },
-      move: { enable: true, speed: 1.5, outModes: "bounce" },
-      opacity: { value: 0.6 },
-      size: { value: { min: 1, max: 3 } },
-    },
-    detectRetina: true,
-  });
-
   const getColorConfig = () => ({
     fullScreen: false,
     fpsLimit: 60,
@@ -66,7 +47,7 @@
 
   await tsParticles.load({ 
     id: "particle-canvas", 
-    options: getDarkConfig() 
+    options: getColorConfig()
     });
 
   // ----- Make color mode particles retain movement after cursor leaves page
@@ -75,7 +56,6 @@
   let momentum = { x: 0, y: 0 };
 
   window.addEventListener("mousemove", (e) => {
-    if (!document.body.classList.contains("color-mode")) return;
     const w = window.innerWidth;
     const h = window.innerHeight;
     const newDx = (e.clientX - w / 2) / (w / 2);
@@ -88,8 +68,6 @@
 
   // when cursor leaves page, apply momentum then decay it
   document.addEventListener("mouseleave", () => {
-    if (!document.body.classList.contains("color-mode")) return;
-    
     function decayMomentum() {
       if (Math.abs(momentum.x) < 0.001 && Math.abs(momentum.y) < 0.001) return;
       
@@ -115,54 +93,4 @@
     decayMomentum();
   });
   // ----- Make color mode particles retain movement..., end
-
-  // Swap particles config when mode switches
-  const observer = new MutationObserver(async () => {
-    const isColor = document.body.classList.contains("color-mode");
-
-    // Color flash on particles when switch dark to color mode
-    if (isColor) {
-      await tsParticles.load({
-        id: "particle-canvas",
-        options: getColorConfig(),
-      });
-
-      // wait for particles to fully initialize before color flash
-      setTimeout(() => {
-        const c = tsParticles.domItem(0);
-        if (c) {
-          c.particles._array.forEach(p => {
-            p.color.h = { value: 210 };       // color hexes converted to HSL
-            p.color.s = { value: 85 };        // tsParticles renders internally in HSL, not hex
-            p.color.l = { value: 65 };
-          });
-          // gradually fade back to white
-          let l = 65;
-          let s = 85;
-          function fadeToWhite() {
-            l += (100 - l) * 0.05;      // lerp lightness toward 100
-            s += (0 - s) * 0.05;        // lerp saturation toward 0
-            
-            c.particles._array.forEach(p => {
-              p.color.l = { value: l };
-              p.color.s = { value: s };
-            });
-
-            if (s > 0.5 && l < 99.5) {            // keep going until basically white
-              requestAnimationFrame(fadeToWhite);
-            }
-          }
-          setTimeout(fadeToWhite, 500);  // hold blue briefly then start fading
-        }
-      }, 100);  // small delay for particles to initialize first
-    }
-    else {
-      await tsParticles.load({
-        id: "particle-canvas",
-        options: getDarkConfig(),
-      });
-    }
-  });
-
-  observer.observe(document.body, { attributeFilter: ["class"] });
 </script>
